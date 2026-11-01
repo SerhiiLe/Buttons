@@ -1,0 +1,14 @@
+{
+  "name": "Buttons",
+  "version": "1.0.0",
+  "description": "Lightweight, zero-dependency button library with debounce, multi-clicks, hold, step, and abstract base class for custom sources like ESP32 touch.",
+  "keywords": "button, debouncing, clicks, touch, esp32, esp8266, arduino",
+  "authors": [
+    {
+      "name": "Serhii Lebedenko"
+    }
+  ],
+  "frameworks": "arduino",
+  "platforms": "*"
+}
+
