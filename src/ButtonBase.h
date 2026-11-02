@@ -3,8 +3,8 @@
 #if defined(ARDUINO)
 #include <Arduino.h>
 #else
-#include <cstdint>
-#include <cstddef>
+#include <stdint.h>
+#include <stddef.h>
 extern uint32_t millis();
 #endif
 
