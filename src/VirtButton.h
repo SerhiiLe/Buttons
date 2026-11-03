@@ -21,7 +21,7 @@
  */
 class VirtButton : public ButtonBase {
 public:
-    VirtButton(bool (*readCb)() = nullptr) : _state(false), _cb(readCb) {}
+    VirtButton() : _state(false), _cb(nullptr) {}
 
     /**
      * @brief Установить текущее сырое состояние виртуальной кнопки.
@@ -34,18 +34,22 @@ public:
         return _state;
     }
 
-    /**
-     * @brief Задать функцию обратного вызова для чтения сырого состояния.
-     */
-    void setReadCallback(bool (*readCb)()) {
-        _cb = readCb;
-    }
-
 #if !defined(__AVR__)
-    VirtButton(std::function<bool()> readCb) : _state(false), _cb(nullptr), _stdCb(readCb) {}
+    typedef std::function<bool()> ReadCallback;
 
-    void setReadCallback(std::function<bool()> readCb) {
+    VirtButton(ReadCallback readCb) : _state(false), _cb(nullptr), _stdCb(readCb) {}
+
+    void setReadCallback(ReadCallback readCb) {
         _stdCb = readCb;
+        _cb = nullptr;
+    }
+#else
+    typedef bool (*ReadCallback)();
+
+    VirtButton(ReadCallback readCb) : _state(false), _cb(readCb) {}
+
+    void setReadCallback(ReadCallback readCb) {
+        _cb = readCb;
     }
 #endif
 
@@ -64,6 +68,6 @@ private:
     bool _state;
     bool (*_cb)();
 #if !defined(__AVR__)
-    std::function<bool()> _stdCb = nullptr;
+    ReadCallback _stdCb = nullptr;
 #endif
 };

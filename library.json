@@ -2,13 +2,28 @@
   "name": "Buttons",
   "version": "1.0.0",
   "description": "Lightweight, zero-dependency button library with debounce, multi-clicks, hold, step, and abstract base class for custom sources like ESP32 touch.",
-  "keywords": "button, debouncing, clicks, touch, esp32, esp8266, arduino",
+  "keywords": "button, debouncing, clicks, touch, esp32, esp8266, stm32, rp2040, arduino",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SerhiiLe/Buttons.git"
+  },
   "authors": [
     {
-      "name": "Serhii Lebedenko"
+      "name": "Serhii Lebedenko",
+      "email": "slebedenko@gmail.com",
+      "url": "https://github.com/SerhiiLe"
     }
   ],
+  "license": "LGPL-3.0-or-later",
   "frameworks": "arduino",
-  "platforms": "*"
+  "platforms": "*",
+  "headers": [
+    "Buttons.h",
+    "Button.h",
+    "ButtonBase.h",
+    "VirtButton.h",
+    "TouchButton.h",
+    "EncButton.h"
+  ],
+  "examples": "examples/*/*.ino"
 }
-
